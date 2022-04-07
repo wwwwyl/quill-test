@@ -1,18 +1,26 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <QuillEditor msg="Welcome to Your Vue.js App"/>
+    <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import QuillEditor from '@/components/QuillEditor.vue'
 
 export default {
   name: 'HomeView',
   components: {
-    QuillEditor,
+  },
+  created() {
+    this.jump();
+  },
+  methods: {
+    jump() {
+      this.$router.push({path: '/editor'});
+    },
+    input(val){
+      console.log(JSON.stringify(val));
+    }
   }
 }
 </script>
