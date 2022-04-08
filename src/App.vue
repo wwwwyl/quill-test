@@ -1,12 +1,24 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/editor">Editor</router-link>
-    </nav>
-    <router-view/>
+    <el-container>
+      <el-header>
+        <HeaderToolbar/>
+      </el-header>
+      <el-main>
+        <router-view />
+      </el-main>
+    </el-container>
   </div>
 </template>
+
+<script>
+import HeaderToolbar from '@/components/HeaderToolbar.vue'
+export default {
+  components: {
+    HeaderToolbar,
+  },
+};
+</script>
 
 <style>
 #app {

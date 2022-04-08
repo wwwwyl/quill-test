@@ -4,6 +4,10 @@ import router from './router'
 import store from './store'
 import axios from 'axios'
 import qs from 'qs';
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+
+Vue.use(ElementUI);
 
 axios.defaults.baseURL = 'api'
 Vue.prototype.$axios = axios
