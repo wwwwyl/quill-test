@@ -2,7 +2,7 @@
   <div>
     <!-- Create toolbar container -->
     <div id="toolbar">
-      <el-row :gutter="2" style="margin:0 auto;">
+      <el-row :gutter="2" style="margin: 0 auto">
         <el-col :span="4"
           ><div>
             <button class="ql-bold"></button>
@@ -60,19 +60,9 @@
       </el-row>
       <!-- Add font size dropdown -->
     </div>
-    <div id="editor"></div>
-    <div class="infinite-list-wrapper" style="overflow:auto">
-    <ul
-      class="list"
-      v-infinite-scroll="load"
-      infinite-scroll-disabled="disabled">
-      <li v-for="i in count" :key=i class="list-item">{{ i }}</li>
-    </ul>
-    <!-- <p v-if="loading">加载中...</p>
-    <p v-if="noMore">没有更多了</p> -->
-  </div>
-    
-    
+      <el-scrollbar :style="{height:eHeight}">
+        <div id="editor"></div>
+      </el-scrollbar>
   </div>
 </template>
 
@@ -83,14 +73,15 @@ export default {
   name: "QuillEditor",
   props: {
     value: Object,
+    eHeight: String,
   },
   data() {
     return {
       quill: null,
-      count:0,
     };
   },
   mounted() {
+
     // let dom = this.$el.querySelector('.editor')
     this.quill = new Quill("#editor", {
       theme: "snow",
@@ -104,26 +95,29 @@ export default {
       this.$emit("input", this.quill.getContents());
     });
   },
+  watch: {
+  },
   methods: {
     setContents(val) {
       console.log("set contents");
       this.quill.setContents(val);
     },
-    load () {
-      this.count++;
-    }
   },
 };
 </script>
 
 <style scoped>
 .ql-container {
-  height: 200px;
+  height: 1200px;
   width: 800px;
   margin: 0 auto;
 }
 #editor {
-  border-top: 1px solid #ccc;
+  border: 1px solid #dcdfe6;
+  border-radius: 4px;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  margin-top: 5px;
+  margin-bottom: 20px;
 }
 .ql-toolbar {
   border: 0px;
@@ -131,5 +125,12 @@ export default {
 #toolbar {
   width: 800px;
   margin: 0 auto;
+}
+
+.el-scrollbar__wrap {
+  overflow-x: hidden;
+}
+.el-scrollbar__bar.is-horizontal {
+  display: none;
 }
 </style>

@@ -9,7 +9,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.use(ElementUI);
 
-axios.defaults.baseURL = 'api'
+axios.defaults.baseURL = '/api'
 Vue.prototype.$axios = axios
 Vue.prototype.$qs = qs
 

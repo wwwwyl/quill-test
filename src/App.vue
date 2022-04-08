@@ -4,7 +4,7 @@
       <el-header>
         <HeaderToolbar/>
       </el-header>
-      <el-main>
+      <el-main style="padding-bottom:0px">
         <router-view />
       </el-main>
     </el-container>
