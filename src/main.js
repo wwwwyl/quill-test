@@ -2,12 +2,12 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import axios, { Axios } from 'axios'
-import VueAxios from 'vue-axios'
+import axios from 'axios'
+import qs from 'qs';
 
-Vue.use(VueAxios, axios)
+axios.defaults.baseURL = 'api'
 Vue.prototype.$axios = axios
-axios.defaults.baseURL = '/api'
+Vue.prototype.$qs = qs
 
 Vue.config.productionTip = false
 

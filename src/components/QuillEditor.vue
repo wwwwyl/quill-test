@@ -46,6 +46,12 @@ export default {
     this.quill.on('text-change', () => {
       this.$emit('input', this.quill.getContents())
     });
+  },
+  methods: {
+    setContents (val) {
+      console.log("set contents");
+      this.quill.setContents(val);
+    }
   }
 }
 </script>
