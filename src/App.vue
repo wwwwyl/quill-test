@@ -29,10 +29,11 @@ export default {
   data(){
     return{
       isRouterAlive: true,
-      editorView: false,
+      editorView: false, // 控制工具栏
     }
   },
   methods:{
+    // 重载页面
     reload(){
       this.isRouterAlive = false;
       this.$nextTick(function(){

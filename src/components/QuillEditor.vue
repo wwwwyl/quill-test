@@ -61,9 +61,9 @@
       </el-row>
       <!-- Add font size dropdown -->
     </div>
-      <el-scrollbar :style="{height:eHeight}">
-        <div id="editor"></div>
-      </el-scrollbar>
+    <el-scrollbar :style="{ height: eHeight }">
+      <div id="editor"></div>
+    </el-scrollbar>
   </div>
 </template>
 
@@ -83,7 +83,6 @@ export default {
     };
   },
   mounted() {
-
     // let dom = this.$el.querySelector('.editor')
     this.quill = new Quill("#editor", {
       theme: "snow",
@@ -98,8 +97,7 @@ export default {
     });
     this.quill.enable(this.disabled);
   },
-  watch: {
-  },
+  watch: {},
   methods: {
     setContents(val) {
       console.log("set contents");
