@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
-    <el-carousel :interval="5000" arrow="always" height="450px" style="width:60%; margin:0 auto;">
+    <el-carousel :interval="5000" arrow="always" height="600px" style="width:60%; margin:0 auto;">
       <el-carousel-item v-for="(item, index) in topImg" :key="index">
         <img :src="item.url" style="width:100%;">
       </el-carousel-item>

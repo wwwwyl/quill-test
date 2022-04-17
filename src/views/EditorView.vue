@@ -44,6 +44,7 @@ export default {
   },
   methods: {
     save() {
+        let nt = this.$notify;
         console.log('saving!');
         this.$axios.post('saving/save', this.$qs.stringify({
             name : this.filename,
@@ -51,6 +52,12 @@ export default {
         }))
         .then(function (response) {
             console.log(response);
+            nt({
+              title: "保存成功",
+              type: "success",
+              position: 'top-left',
+              offset:60,
+            });
         })
         .catch(function (error) {
             console.log(error);
