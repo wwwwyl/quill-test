@@ -1,7 +1,8 @@
 <template>
   <div>
     <!-- Create toolbar container -->
-    <div id="toolbar">
+    <div id="toolbar" v-if="!this.disabled"></div>
+    <div id="toolbar" v-if="this.disabled">
       <el-row :gutter="2" style="margin: 0 auto">
         <el-col :span="4"
           ><div>
@@ -74,6 +75,7 @@ export default {
   props: {
     value: Object,
     eHeight: String,
+    disabled: true,
   },
   data() {
     return {
@@ -94,6 +96,7 @@ export default {
     this.quill.on("text-change", () => {
       this.$emit("input", this.quill.getContents());
     });
+    this.quill.enable(this.disabled);
   },
   watch: {
   },

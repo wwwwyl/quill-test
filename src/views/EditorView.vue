@@ -1,8 +1,8 @@
 <template>
   <div class="1editor" style="margin-bottom:0px">
-      <el-button v-on:click="save" type="primary" :disabled="!this.$store.state.isLogin">save</el-button>
+      <!-- <el-button v-on:click="save" type="primary" :disabled="!this.$store.state.isLogin">save</el-button> -->
     <!-- <el-button v-on:click="load">load</el-button> -->
-    <QuillEditor v-on:input="input" ref="myEditor" eHeight="580px"/>
+    <QuillEditor v-on:input="input" ref="myEditor" eHeight="580px" :disabled="this.$store.state.isLogin"/>
     
   </div>
 </template>
@@ -13,6 +13,7 @@ import QuillEditor from '@/components/QuillEditor.vue'
 
 export default {
   name: 'EditorView',
+  inject:['enterEditorView'],
   components: {
     QuillEditor,
   },
@@ -29,7 +30,7 @@ export default {
       this.raw = {};
       this.editor = this.$refs.myEditor;
 
-        // console.log(this.$route.params.openFile);
+      // 打开文件 
       if(this.$route.params.openFile !== undefined){
           console.log('open file~');
           this.filename = this.$route.params.openFile;
@@ -37,6 +38,9 @@ export default {
       }else{
           this.filename = 'test';
       }
+      this.enterEditorView(); // 切换编辑器工具栏
+
+      this.$store.commit("setSaveFunction", this.save); // 提交save函数给vuex
       
   },
   updated () {

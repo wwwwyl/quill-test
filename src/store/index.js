@@ -5,7 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    isLogin: false
+    isLogin: false,
+    saveFunction: function(){console.log("Error: empty save function")},
   },
   getters: {
   },
@@ -15,6 +16,10 @@ export default new Vuex.Store({
     },
     logout (state) {
       state.isLogin = false
+    },
+    setSaveFunction(state, payload) {
+      console.log("setSaveFunction");
+      state.saveFunction = payload;
     }
   },
   actions: {

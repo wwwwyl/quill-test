@@ -2,10 +2,11 @@
   <div id="app">
     <el-container>
       <el-header>
-        <HeaderToolbar/>
+        <HeaderToolbar v-if="!this.editorView"/>
+        <EditorToolbar v-if="isRouterAlive && this.editorView"/>
       </el-header>
       <el-main style="padding-bottom:0px">
-        <router-view />
+        <router-view v-if="isRouterAlive"/>
       </el-main>
     </el-container>
   </div>
@@ -13,10 +14,39 @@
 
 <script>
 import HeaderToolbar from '@/components/HeaderToolbar.vue'
+import EditorToolbar from '@/components/EditorToolbar.vue'
 export default {
   components: {
-    HeaderToolbar,
+    HeaderToolbar,EditorToolbar,
   },
+  provide(){
+    return{
+      reload: this.reload,
+      enterEditorView: this.enterEditorView,
+      quitEditorView: this.quitEditorView,
+    }
+  },
+  data(){
+    return{
+      isRouterAlive: true,
+      editorView: false,
+    }
+  },
+  methods:{
+    reload(){
+      this.isRouterAlive = false;
+      this.$nextTick(function(){
+        this.isRouterAlive = true;
+      })
+      console.log("reload");
+    },
+    enterEditorView(){
+      this.editorView = true;
+    },
+    quitEditorView(){
+      this.editorView = false;
+    }
+  }
 };
 </script>
 
