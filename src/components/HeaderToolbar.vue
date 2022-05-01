@@ -35,18 +35,19 @@
           ></el-input>
         </div>
         <div style="margin-top: 10px " >
-            <a style=" color:#409EFF; float:right;margin-right:15px; text-decoration:none" href="">忘记密码</a>
+            <a style=" color:#409EFF; float:right;margin-right:15px; text-decoration:none " href="">忘记密码</a>
         </div>
 
-        <span slot="footer" class="dialog-footer" style=":text-align:center">
-          <!-- <el-button @click="dialogVisible = false">取 消</el-button> -->
-          <el-button type="primary" @click="handleLogin" style=":text-align:center">确 定</el-button>
-          <span style=":text-align:center;line-height:30px">
+        <div class="dialog-footer" style="height:50px;padding-top: 25px">
+          <!-- <el-button @click="dialogVisible = false">取 消</el-button>  -->
+          <!-- style=":text-align:left" -->
+          <el-button type="primary" @click="handleLogin" style="float: center;text-align:center">确 定</el-button>
+          <span style="line-height:30px; text-align:center;padding-top:30px">
             <li style="font-size: 14px">没有账号？
-              <a style="color:#409EFF; text-decoration:none" @click="makeDialogUnvisAndDialog2vis">立即注册</a>
+              <a style="color:#409EFF; text-decoration:none;cursor:pointer" @click="makeDialogUnvisAndDialog2vis">立即注册</a>
             </li>
           </span>
-        </span>
+        </div>
       </el-dialog>
       
       <el-dialog title="" :visible.sync="dialog2Visible" width="600px" >
@@ -72,15 +73,15 @@
           ></el-input>
         </div>
 
-        <span slot="footer" class="dialog-footer" style=":text-align:center">
+        <div class="dialog-footer" style=":text-align:center; height:50px; padding-top: 25px">
           <!-- <el-button @click="dialogVisible = false">取 消</el-button> -->
           <el-button type="primary" @click="handleLogin" style=":text-align: center">注 册</el-button>
           <span style=":text-align:center;line-height:30px">
             <li style="font-size: 14px">已有账号？
-              <a style="color:#409EFF; text-decoration:none" @click="makeDialog2UnvisAndDialogvis">立即登录</a>
+              <a style="color:#409EFF; text-decoration:none;cursor:pointer" @click="makeDialog2UnvisAndDialogvis">立即登录</a>
             </li>
           </span>
-        </span>
+        </div>
       </el-dialog>
 
     </el-menu>
